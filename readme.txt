@@ -1,3 +1,3 @@
 in readme
 creating a new branch is quick
-i wanna add 1 line
+i wanna add one or two line
