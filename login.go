@@ -36,8 +36,10 @@ func login(w http.ResponseWriter, r *http.Request) {
 		t, _ := template.ParseFiles("login.gtpl")
 		t.Execute(w, nil)
 	} else {
+		fmt.Println(r.Form) // []
 		r.ParseForm()
 		fmt.Println("username:", r.Form["username"])
-		fmt.Println("password", r.Form["password"])
+		fmt.Println("username:", r.FormValue("username")) // 无需ParseForm
+		fmt.Println("password:", r.Form["password"])
 	}
 }
