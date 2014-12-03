@@ -19,7 +19,7 @@ func main() {
 
 func sayHelloName(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	fmt.Println(r.Form)
+	fmt.Println(r.Form) //map类型
 	fmt.Println("path", r.URL.Path)
 	fmt.Println("schema", r.URL.Scheme)
 	fmt.Println(r.Form["url_long"])
@@ -28,4 +28,16 @@ func sayHelloName(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("val:", strings.Join(v, ""))
 	}
 	fmt.Fprint(w, "hello mr.su")
+}
+
+func login(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("method:", r.Method)
+	if r.Method == "GET" {
+		t, _ := template.ParseFiles("login.gtpl")
+		t.Execute(w, nil)
+	} else {
+		r.ParseForm()
+		fmt.Println("username:", r.Form["username"])
+		fmt.Println("password", r.Form["password"])
+	}
 }
