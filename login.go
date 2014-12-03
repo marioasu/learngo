@@ -36,10 +36,17 @@ func login(w http.ResponseWriter, r *http.Request) {
 		t, _ := template.ParseFiles("login.gtpl")
 		t.Execute(w, nil)
 	} else {
-		fmt.Println(r.Form) // []
-		r.ParseForm()
-		fmt.Println("username:", r.Form["username"])
-		fmt.Println("username:", r.FormValue("username")) // 无需ParseForm
+		fmt.Println(r.Form)                               // []
+		r.ParseForm()                                     // 此时r.Form为url.Values类型
+		fmt.Println("username:", r.Form["username"])      // 得到的是数组
+		fmt.Println("username:", r.Form.Get("username"))  // url.Values类型的方法 所以需要先ParseForm
+		fmt.Println("username:", r.FormValue("username")) // 自动ParseForm
 		fmt.Println("password:", r.Form["password"])
+
+		// 防xss测试
+		fmt.Println("username:", template.HTMLEscapeString(r.Form.Get("username")))
+		fmt.Println("password:", template.HTMLEscapeString(r.Form.Get("password")))
+		template.HTMLEscape(w, []byte(r.Form.Get("username")))
+		// fmt.Fprint(w, r.Form.Get("username"))
 	}
 }
