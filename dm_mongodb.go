@@ -20,14 +20,14 @@ func main() {
 
 	session.SetMode(mgo.Monotonic, true)
 
-	c := session.DB("test").C("people")
-	err = c.Insert(&Person{"ale", "18223292888"})
+	c := session.DB("test").C("people") // c has type Collection
+	// err = c.Insert(&Person{"ale", "18223292888"})
 	if err != nil {
 		panic(err)
 	}
 
 	result := Person{}
-	err = c.Find(bson.M{"name": "ale"}).One(&result)
+	err = c.Find(bson.M{"name": "ale"}).One(&result) // bson.M创建一个M类型的map  type M map[string]interface{}
 	if err != nil {
 		panic(err)
 	}
