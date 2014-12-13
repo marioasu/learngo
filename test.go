@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	// "gopkg.in/mgo.v2/bson"
+	"math/rand"
 )
 
 func main() {
