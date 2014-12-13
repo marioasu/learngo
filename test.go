@@ -4,6 +4,8 @@ import (
 	"fmt"
 	// "gopkg.in/mgo.v2/bson"
 	"crypto/rand"
+	"encoding/base64"
+	"io"
 	// "time"
 )
 
@@ -21,6 +23,13 @@ func main() {
 	fmt.Println("------------")
 
 	fmt.Println(rand.Reader) // &{0 {0 0}}
+	b := make([]byte, 3)
+	if _, err := io.ReadFull(rand.Reader, b); err != nil {
+		fmt.Println("err isnot nil")
+	}
+
+	fmt.Println(b)
+	fmt.Println(base64.URLEncoding.EncodeToString(b))
 
 	fmt.Println("------------")
 }
