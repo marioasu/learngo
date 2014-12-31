@@ -9,6 +9,8 @@ import (
 	// "time"
 )
 
+var t int
+
 func main() {
 	//fmt.Println(bson.M{"name": "mario"})
 	// var m = make(map[string]int)
@@ -23,7 +25,7 @@ func main() {
 	fmt.Println("------------")
 
 	fmt.Println(rand.Reader) // &{0 {0 0}}
-	b := make([]byte, 3)
+	b := make([]byte, 32)
 	if _, err := io.ReadFull(rand.Reader, b); err != nil {
 		fmt.Println("err isnot nil")
 	}
@@ -32,4 +34,5 @@ func main() {
 	fmt.Println(base64.URLEncoding.EncodeToString(b))
 
 	fmt.Println("------------")
+	fmt.Println(t)
 }
