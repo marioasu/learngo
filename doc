@@ -1,0 +1,19 @@
+并发实现的分析
+http://morsmachine.dk/go-scheduler
+http://stackoverflow.com/questions/18058164/is-golang-goroutine-a-coroutine
+http://www.infoq.com/cn/articles/knowledge-behind-goroutine/
+
+分裂栈
+http://gcc.gnu.org/wiki/SplitStacks
+
+连续栈
+http://agis.io/2014/03/25/contiguous-stacks-in-go.html
+https://docs.google.com/document/d/1wAaf1rYoM4S4gtnPh0zOlGzWtrZFQ5suE8qr2sD8uWQ/pub
+
+TOS ： 栈顶
+
+escape analysis (逃逸分析)
+http://en.wikipedia.org/wiki/Escape_analysis
+http://staff.ustc.edu.cn/~yuzhang/papers/cncc07.pdf
+http://www.jos.org.cn/1000-9825/19/522.pdf
+
